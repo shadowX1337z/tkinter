@@ -38,6 +38,7 @@ dang_ky_ten_head = Label(root,text="Nhập tên tại đây",fg="#00407d",bg="#A
 dang_ky_password_head = Label(root,text="Nhập mật khẩu tại đây",fg="#00407d",bg="#ADFFF5")
 dang_ky_ten = Entry(root,width=35,font=("Arial",14))
 dang_ky_password = Entry(root,width=35,font=("Arial",14),show = "*")
+version = Label(root,text="ver_5w43a26h10",fg="#272727",bg="#00ffd5")
 
 # === DANH SÁCH NGƯỜI DÙNG ===
 luu_list_user = {}
@@ -115,6 +116,29 @@ def bam_nut_goi_dang_nhap():
      thong_loi_thieu_thong_tin_name.config(text="")
      thong_loi_thieu_thong_tin_password.config(text="")
      dang_nhap_button.place(x=190,y=270)
+
+def bam_nut_goi_dang_ki():
+     root.title("ĐĂNG KÍ")
+     inbox.config(bg="#E2FF6D")
+     dang_ki_head.config(text="ĐĂNG KÍ",fg="#2200ff",bg="#9dffad",font=("Arial",20))
+     root.config(bg="#E2FF6D")
+     nen_desktop_dangki.config(bg="#9dffad")
+     dang_ky_ten_head.config(bg="#9dffad")
+     dang_ky_ten.config(bg="#9dffad")
+     dang_ky_password_head.config(bg="#9dffad")
+     dang_ky_password.config(bg="#9dffad")
+     thong_loi_thieu_thong_tin_name.config(bg="#9dffad")
+     thong_loi_thieu_thong_tin_password.config(bg="#9dffad")
+     dang_ky_ten.delete(0,END)
+     dang_ky_password.delete(0,END)
+     dang_ky_button.place_forget() 
+     goi_dang_nhap_button.place_forget()
+     dang_nhap_button.place(x=190,y=270)
+     goi_dang_ki_button.place(x=375,y=350)
+     thong_loi_thieu_thong_tin_name.config(text="")
+     thong_loi_thieu_thong_tin_password.config(text="")
+     dang_nhap_button.place(x=190,y=270)
+
 #===tạo nút đăng kí===
 dang_ky_button = Button(root,text="ĐĂNG KÍ",fg="#b300ff",bg="#00ff22",font=("Arial",15),command=bam_nut_dang_ki)
 dang_nhap_button = Button(root,text="ĐĂNG NHẬP",fg="#b300ff",bg="#00ff22",font=("Arial",15),command=bam_nut_dang_nhap)
@@ -174,5 +198,6 @@ dang_ky_ten.bind("<FocusIn>",click_vao_nhap_name)
 dang_ky_ten.bind("<Key>",log_nhap_ten)
 dang_ky_password.bind("<FocusIn>",click_vao_nhap_password)
 dang_ky_password.bind("<Key>",log_nhap_password)
+version.place(x=3,y=1)
 
 root.mainloop()
