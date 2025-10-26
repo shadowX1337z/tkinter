@@ -1,13 +1,13 @@
-import tkinter,time
+import tkinter,time,webbrowser
 from tkinter import *
 from tkinter import messagebox
 from tkinter import font
-
 root = Tk()
 root.geometry("500x400")
 root.title("Đăng kí")
 root.config(bg = "#00ffd5")
 root.resizable(width=False,height=False)
+
 #===canvas===
 nen_desktop_dangki = Canvas(root,width = 400,height = 300,bg="#ADFFF5",highlightthickness = 0)
 nen_desktop_dangki.place(x=50,y=30)
@@ -29,6 +29,8 @@ def ra_ngoai_nut_dang_ki(event):
         dang_ky_button.config(bg="#00ff22")
 def ra_ngoai_nut_dang_nhap(event):
         dang_nhap_button.config(bg="#00ff22")
+def inbox_khoa():
+     webbrowser.open("https://www.facebook.com/pham.anh.khoa.842202#")
 
 # === CÁC THÀNH PHẦN GIAO DIỆN ===
 dang_ki_head = Label(root,text="ĐĂNG KÍ",fg="#2200ff",bg="#ADFFF5",font=("Arial",20))
@@ -65,7 +67,7 @@ def luu_info():
     return True
 
 #====hàm xử lí click vào nút đăng kí ===
-def xu_li_nut_dang_ki():
+def xu_li_nut_dang_ki_nhap():
     name = dang_ky_ten.get()
     password = dang_ky_password.get()
     time_luu_info = time.localtime()
@@ -74,16 +76,27 @@ def xu_li_nut_dang_ki():
 
 def bam_nut_dang_ki():
     if luu_info():  #lưu thành công
-        xu_li_nut_dang_ki()
+        xu_li_nut_dang_ki_nhap()
         name = dang_ky_ten.get()
         password = dang_ky_password.get()
-        xu_li_nut_dang_ki()
+        xu_li_nut_dang_ki_nhap()
         messagebox.showinfo("THÔNG BÁO", "Đăng kí thành công!")
         thong_loi_thieu_thong_tin_name.config(text="")
         thong_loi_thieu_thong_tin_password.config(text="")
 
 def bam_nut_dang_nhap():
+    if luu_info():  #lưu thành công
+        xu_li_nut_dang_ki_nhap()
+        name = dang_ky_ten.get()
+        password = dang_ky_password.get()
+        xu_li_nut_dang_ki_nhap()
+        messagebox.showinfo("THÔNG BÁO", "Đăng nhập thành công!")
+        thong_loi_thieu_thong_tin_name.config(text="")
+        thong_loi_thieu_thong_tin_password.config(text="")
+
+def bam_nut_goi_dang_nhap():
      root.title("ĐĂNG NHẬP")
+     inbox.config(bg="#E2FF6D")
      dang_ki_head.config(text="ĐĂNG NHẬP",fg="#2200ff",bg="#9dffad",font=("Arial",20))
      root.config(bg="#E2FF6D")
      nen_desktop_dangki.config(bg="#9dffad")
@@ -93,20 +106,26 @@ def bam_nut_dang_nhap():
      dang_ky_password.config(bg="#9dffad")
      thong_loi_thieu_thong_tin_name.config(bg="#9dffad")
      thong_loi_thieu_thong_tin_password.config(bg="#9dffad")
-     dang_ky_button.place_forget()
+     dang_ky_ten.delete(0,END)
+     dang_ky_password.delete(0,END)
+     dang_ky_button.place_forget() 
+     goi_dang_nhap_button.place_forget()
+     dang_nhap_button.place(x=190,y=270)
+     goi_dang_ki_button.place(x=375,y=350)
      thong_loi_thieu_thong_tin_name.config(text="")
      thong_loi_thieu_thong_tin_password.config(text="")
-     
+     dang_nhap_button.place(x=190,y=270)
+#===tạo nút đăng kí===
+dang_ky_button = Button(root,text="ĐĂNG KÍ",fg="#b300ff",bg="#00ff22",font=("Arial",15),command=bam_nut_dang_ki)
+dang_nhap_button = Button(root,text="ĐĂNG NHẬP",fg="#b300ff",bg="#00ff22",font=("Arial",15),command=bam_nut_dang_nhap)
+font_underline_ = font.Font(family="Arial", size=12, underline=1)
+goi_dang_nhap_button = Button(root,text="ĐĂNG_NHẬP",fg="#0034C5",bg="#00ffd5",font=font_underline_,bd=0,highlightthickness=0, relief="flat",command = bam_nut_goi_dang_nhap)
+goi_dang_ki_button = Button(root,text="ĐĂNG KÍ",fg="#0034C5",bg="#E2FF6D",font=font_underline_,bd=0,highlightthickness=0, relief="flat")
+inbox = Button(root,text="Inbox Admin",fg="#24C500",bg="#00ffd5",font=font_underline_,bd=0,highlightthickness=0, relief="flat",command=inbox_khoa)
 
 def luu_info_vao_file(name, password):
     with open("data_info_user.txt", "a", encoding="utf-8") as file:
         file.write(f"{name}:{password}\n")
-
-#===tạo nút đăng kí===
-dang_ky_button = Button(root,text="ĐĂNG KÍ",fg="#b300ff",bg="#00ff22",font=("Arial",15),command=bam_nut_dang_ki)
-dang_nhap_button = Button(root,text="ĐĂNG NHẬP",fg="#b300ff",bg="#00ff22",font=("Arial",15))
-font_underline_ = font.Font(family="Arial", size=12, underline=1)
-goi_dang_nhap_button = Button(root,text="ĐĂNG_NHẬP",fg="#0034C5",bg="#00ffd5",font=font_underline_,bd=0,highlightthickness=0, relief="flat",command = bam_nut_dang_nhap)
 
 # === HÀM GHI LOG ===
 def click_vao_nhap_password(event):
@@ -136,7 +155,8 @@ dang_ky_password_head.place(x=58,y=180)
 dang_ky_password.place(x=58,y=200)
 dang_ky_button.place(x=190,y=270)
 goi_dang_nhap_button.place(x=375,y=350)
-dang_nhap_button.place()
+inbox.place(x=50,y=350)
+
 #===gộp hàm===
 def log_nhap_ten(event):
      nhap_vao_nhap_name(event)
