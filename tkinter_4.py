@@ -38,7 +38,7 @@ dang_ky_ten_head = Label(root,text="Nhập tên tại đây",fg="#00407d",bg="#A
 dang_ky_password_head = Label(root,text="Nhập mật khẩu tại đây",fg="#00407d",bg="#ADFFF5")
 dang_ky_ten = Entry(root,width=35,font=("Arial",14))
 dang_ky_password = Entry(root,width=35,font=("Arial",14),show = "*")
-version = Label(root,text="ver_6w43b27h10",fg="#272727",bg="#00ffd5")
+version = Label(root,text="ver_6w44a27h10",fg="#272727",bg="#00ffd5")
 
 # === DANH SÁCH NGƯỜI DÙNG ===
 luu_list_user = {}
