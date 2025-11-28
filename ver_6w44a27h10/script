@@ -1,0 +1,62 @@
+1. Giao diện chính
+ Kích thước cố định 500×400, không cho thay đổi size.
+ Màu nền mặc định: #00ffd5.
+ Có canvas trung tâm làm nền cho khu nhập liệu.
+ Có label hiển thị:
+ Tiêu đề: "ĐĂNG KÍ"
+ Nhãn nhập tên, mật khẩu
+ Label version: "ver_6w44a27h10"
+2. Ô nhập liệu
+ Hai Entry chính:
+ Tên
+ Mật khẩu
+ Behavior:
+ Tự xoá lỗi khi nhập.
+ Log khi người dùng gõ bất kỳ phím nào.
+ Log khi người dùng click vào ô nhập.
+3. Hiển thị lỗi
+ Các label lỗi:
+ Thiếu tên
+ Thiếu mật khẩu
+ (Hiện tại bỏ hoàn toàn phần kiểm tra phức tạp: ký tự đặc biệt, độ dài, chỉ số…)
+ => BẢN NÀY:Chỉ còn kiểm tra đơn giản: trống tên hoặc trống mật khẩu.
+4. Hệ thống nút bấm
+ Nút Đăng ký — màu xanh, có hiệu ứng hover
+ Nút Đăng nhập — ẩn khi ở chế độ đăng ký
+ Nút ĐĂNG_NHẬP ở góc phải bên dưới để chuyển sang giao diện đăng nhập
+ Nút ĐĂNG KÍ ở chế độ đăng nhập để quay lại đăng ký
+ Nút Inbox Admin dẫn tới Facebook
+5. Hiệu ứng nút
+ Khi rê chuột:
+ Đổi màu khi vào (hover)
+ Đổi lại màu khi ra (leave)
+ Tất cả hoạt động ổn định.
+6. Chuyển đổi chế độ: Đăng ký ↔ Đăng nhập
+ bam_nut_goi_dang_nhap()
+ Đổi tiêu đề thành ĐĂNG NHẬP
+ Đổi màu nền window, canvas, label
+ Ẩn nút đăng ký
+ Hiện nút đăng nhập
+ Hiện lại nút "ĐĂNG KÍ" góc phải để quay lại
+ Reset ô nhập liệu
+ Xóa thông báo lỗi
+ Đổi màu version
+ bam_nut_goi_dang_ki()
+ Đổi tiêu đề lại ĐĂNG KÍ
+ Đổi màu nền về mặc định
+ Ngược lại hoàn toàn với trên
+ Reset toàn bộ input + lỗi
+ Đổi màu version
+7. Hệ thống log hành vi người dùng
+ Gõ phím nào → log
+ Click vào ô nào → log
+ Nhập vào ô nào → log
+ Khi đăng ký → log tên + mật khẩu
+ Khi đăng nhập → log tên + mật khẩu
+8. Module hỗ trợ
+ webbrowser.open() để mở link admin
+ subprocess đã import (chưa dùng)
+ time.localtime() dùng để log thời gian thực
+9. Lưu dữ liệu
+ Có dictionary luu_list_user = {}
+ Có hàm luu_info_vao_file() để lưu vào file data_info_user.txt
