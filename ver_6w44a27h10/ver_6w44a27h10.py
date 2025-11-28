@@ -1,4 +1,4 @@
-import tkinter,time,webbrowser,subprocess
+import tkinter,time,webbrowser
 from tkinter import *
 from tkinter import messagebox
 from tkinter import font
@@ -19,11 +19,6 @@ thong_loi_thieu_thong_tin_name.place(x=58,y=130)
 thong_loi_thieu_thong_tin_password = Label(root, text="", fg="#ff0000", bg="#ADFFF5")
 thong_loi_thieu_thong_tin_password.place(x=58,y=230)
 
-thong_loi_name_co_ki_tu_dac_biet = Label(root,text="",fg="#ff0000", bg="#ADFFF5")
-thong_loi_name_co_ki_tu_dac_biet.place(x=58,y=130)
-
-thong_loi_so_chi_co_so = Label(root,text="",fg="#ff0000", bg="#ADFFF5")
-thong_loi_so_chi_co_so.place(x=58,y=230)
 
 # === HIỆU ỨNG NÚT ===
 def trong_nut_dang_ki(event):
@@ -66,14 +61,9 @@ def luu_info():
     if password == "":
         thong_loi_thieu_thong_tin_password.config(text="Vui lòng điền vào ô này")
         return False
-    if password.isdigit():
-        if password.len() < 8:
-            thong_loi_so_chi_co_so.config(text="""
-            *mật khẩu tối thiểu dài 8 kí tự
-            *mật khẩu bao gồm số và chữ""")
-        if password
     else:
         thong_loi_thieu_thong_tin_password.config(text="")
+
     luu_list_user[name] = password
     return True
 
